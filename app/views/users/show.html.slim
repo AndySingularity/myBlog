@@ -1,0 +1,12 @@
+pre.col-md-6.col-md-offset-3
+	div.col-md-6
+		= image_tag @user.avatar.url(:medium)
+	div.col-md-6.center
+		h1
+			= @user.username
+		br
+		= link_to 'Настройки', edit_user_registration_path, class: 'btn btn-success btn-block'
+		br
+		= link_to "Мои посты", articles_path, class: 'btn btn-success btn-block'
+		br
+		= link_to "Написать новый пост", new_article_path, class: 'btn btn-success btn-block'

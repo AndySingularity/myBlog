@@ -1,0 +1,22 @@
+- title("Вход")
+div.col-md-6.col-md-offset-3
+  h2.center
+    | Вход в аккаунт
+  br
+  div.col-md-10.col-md-offset-1
+    = simple_form_for :user, :as => :user, :url => user_session_path do |f|
+      = devise_error_messages!
+
+      div.form-group
+        label.sr-only
+          | username
+        = f.text_field :username, class: 'form-control', placeholder: 'Имя пользователя'
+      br
+      div.form-group
+        label.sr-only
+          | password
+        = f.password_field :password, class: 'form-control', placeholder: 'Пароль'
+      br
+      div.form-group
+        button.btn.btn-success.btn-block type="submit"
+          | Вход

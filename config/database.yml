@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: blog
+  username: dev
+  password: 599199
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: blog
+  username: dev
+  password: 599199
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: <%= ENV['DB_BASE'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+  host:     <%= ENV['DB_HOST'] %>
+  port: 5432
