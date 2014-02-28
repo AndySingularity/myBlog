@@ -1,0 +1,21 @@
+- title("Редактирование поста")
+
+div.col-md-6.col-md-offset-3
+  h2.center
+    | Редактирование поста
+  br
+  div.col-md-10.col-md-offset-1
+    = simple_form_for :article do |f|
+      div.form-group
+        label.sr-only
+          | article_title
+        = f.text_field :title, class: 'form-control', placeholder: 'Название поста', value: @article.title
+      br
+      div.form-group
+        label.sr-only
+          | article_text
+        = f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6', value: @article.description
+      br
+      div.form-group
+        button.btn.btn-success.btn-block type="submit"
+          | Создать

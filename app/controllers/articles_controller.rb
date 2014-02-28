@@ -4,6 +4,17 @@ class ArticlesController < ApplicationController
 
 	end
 
+  def edit
+    @article = Article.where(:id => params[:id])[0]
+    if params[:article]
+      @article.update(article_params)
+    end 
+  end
+
+  def show
+    @article = Article.where(:id => params[:id])[0]
+  end
+
 	def index
     @articles = Article.all.where(:user_id => current_user.id).reverse
 	end

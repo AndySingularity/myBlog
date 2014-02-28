@@ -4,3 +4,8 @@
   		= post.title
   	hr
   	= post.description
+  	hr
+  	div.col-md-4
+  		= link_to "Просмотреть", article_path(post.id), class: 'btn btn-success btn-block'
+  	div.col-md-4
+  		= link_to "Редактировать", edit_article_path(post.id), class: 'btn btn-success btn-block'

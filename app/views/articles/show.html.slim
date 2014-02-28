@@ -1,0 +1,8 @@
+pre.col-md-8.col-md-offset-2
+	h3.center
+		= @article.title
+	hr
+		= @article.description
+	hr
+	div.col-md-4
+		= link_to "Редактировать", edit_article_path(@article.id), class: 'btn btn-success btn-block'

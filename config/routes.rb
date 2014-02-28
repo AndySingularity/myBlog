@@ -7,8 +7,8 @@ Blog::Application.routes.draw do
   resources :articles
   match 'articles/new' => 'articles#new', via: :all
   match '/' => 'users#show', via: :all
-
-
+  match 'article/show' => 'articles#show', via: :all
+  match "/articles/:id/edit", to: 'articles#edit', via: :all
 
 
   # The priority is based upon order of creation: first created -> highest priority.
