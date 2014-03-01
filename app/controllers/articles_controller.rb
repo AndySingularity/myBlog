@@ -4,10 +4,10 @@ class ArticlesController < ApplicationController
 		if !user_signed_in? then
 			redirect_to new_user_session_path
 		end
+		@user = current_user
 	end
 
 	def create
-		@user = current_user
 		@article = Article.create(article_params)
 		redirect_to articles_path
 	end
@@ -20,18 +20,14 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@user = current_user
 		@article = Article.find_by(:id => params[:id])
 	end
 
 	def index
-		@user = current_user
 		@articles = Article.where(:user_id => current_user.id).all.reverse
 	end
 
 	def new
-		@user = current_user
-		# TODO: Хватит плодить сущности! >_<
 	end
 
 private
