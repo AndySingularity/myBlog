@@ -1,14 +1,15 @@
 Blog::Application.routes.draw do
 
   devise_for :users
-  root 'users#show'
+  root 'articles#show'
 
   resources :users
   resources :articles
-  match 'articles/new' => 'articles#new', via: :all
-  match '/' => 'users#show', via: :all
-  match 'article/show' => 'articles#show', via: :all
-  match "/articles/:id/edit", to: 'articles#edit', via: :all
+
+  get 'users/:id/edit'    => 'users#edit'
+  
+  get 'articles/new'      => 'articles#new'
+  get 'articles/:id/edit' => 'articles#edit'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

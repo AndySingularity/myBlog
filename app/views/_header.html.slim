@@ -17,6 +17,11 @@ nav.navbar.navbar-default role="navigation"
 					a href="#" class="dropdown-toggle" data-toggle="dropdown"
 						| Hello, #{current_user.username}
 				ul.dropdown-menu style="padding: 15px;min-width: 250px;"
+					/ li
+					/ 		= image_tag @user.avatar.url(:medium)
+					br
+					li.center
+						= link_to 'Настройки', edit_user_registration_path
 					
 				li
 					= link_to 'Выход', destroy_user_session_path, :method => :delete
