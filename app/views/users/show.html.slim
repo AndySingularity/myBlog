@@ -1,12 +1,15 @@
-pre.col-md-6.col-md-offset-3
-	div.col-md-6
-		= image_tag @user.avatar.url(:medium)
-	div.col-md-6.center
-		h1
-			= @user.username
-		br
-		= link_to 'Настройки', edit_user_registration_path, class: 'btn btn-success btn-block'
-		br
-		= link_to "Мои посты", articles_path, class: 'btn btn-success btn-block'
-		br
-		= link_to "Написать новый пост", new_article_path, class: 'btn btn-success btn-block'
+div.row
+	div.col-md-6.col-md-offset-3.center
+		div.thumbnail
+			br
+			= image_tag @user.avatar.url(:medium), class: 'thumbnail'
+			div.caption
+				h2
+					= @user.username
+				p
+					= @user.about
+				hr
+				div.btn-group
+					= link_to "Мои записи", articles_path, class: 'btn btn-primary'
+					= link_to "Новая запись", new_article_path, class: 'btn btn-primary'
+					= link_to 'Настройки', edit_user_path(@user.id), class: 'btn btn-primary'

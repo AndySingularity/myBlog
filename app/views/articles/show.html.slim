@@ -1,8 +1,15 @@
-pre.col-md-8.col-md-offset-2
-	h3.center
-		= @article.title
-	hr
-		= @article.description
-	hr
-	div.col-md-4
-		= link_to "Редактировать", edit_article_path(@article.id), class: 'btn btn-success btn-block'
+- title("Новая запись- #{@user.username.capitalize}")
+
+div.row
+	div.col-md-6.col-md-offset-3
+		div.panel.panel-primary
+			div.panel-heading
+				= image_tag @user.avatar.url(:mini)
+				= link_to "  " + @user.username.capitalize + " - ", user_path(@user.id)
+				= link_to @article.title, article_path(@article.id)			
+			div.panel-body
+				div.media
+					a.pull-left href="#"
+						img.media-object src="holder.js/64x64"
+					p
+						| #{@article.description}

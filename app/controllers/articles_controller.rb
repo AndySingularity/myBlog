@@ -1,35 +1,37 @@
 class ArticlesController < ApplicationController
 
 	def create
-
+		@user = current_user
+		@article = Article.create(article_params)
+		redirect_to articles_path
 	end
 
-  def edit
-    @article = Article.where(:id => params[:id])[0]
-    if params[:article]
-      @article.update(article_params)
-    end 
-  end
+	def edit
+		@article = Article.where(:id => params[:id])[0]
+		if params[:article]
+			@article.update(article_params)
+		end 
+	end
 
-  def show
-    @article = Article.where(:id => params[:id])[0]
-  end
+	def show
+		@user = current_user
+		@article = Article.find_by(:id => params[:id])
+	end
 
 	def index
-    @articles = Article.all.where(:user_id => current_user.id).reverse
+		@user = current_user
+		@articles = Article.where(:user_id => current_user.id).all.reverse
 	end
 
 	def new
-    if params[:article]
-      @article = Article.new(article_params)
-      @article.user_id = current_user.id
-      @article.save
-      redirect_to articles_path
-    end
-  end
+		@user = current_user
+		# TODO: Хватит плодить сущности! >_<
+	end
 
-  def article_params
-    params.require(:article).permit(:title,:description)
-  end
+private
+
+	def article_params
+		params.require(:article).permit(:title, :description, :user_id)
+	end
 
 end

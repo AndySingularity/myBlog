@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
 
-
-
-
 	def index
 	end
 
@@ -22,9 +19,18 @@ class UsersController < ApplicationController
 
 
   def user_params
-    params.require(:user).permit(:avatar)
+    params.require(:user).permit(:avatar, :about)
   end
 
+  def edit
+    @user = current_user
+  end
 
+  def update
+    # TODO: Переменную @user нужно сделать доступной для всех методов. DRY-метода ёпты!)
+    @user = current_user
+    @user.update(user_params)
+    redirect_to edit_user_path
+  end
 
 end

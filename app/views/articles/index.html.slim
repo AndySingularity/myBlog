@@ -1,11 +1,16 @@
+- title("Записи - #{@user.username.capitalize}")
+
 - @articles.each do |post|
-  pre.col-md-8.col-md-offset-2
-  	h3.center
-  		= post.title
-  	hr
-  	= post.description
-  	hr
-  	div.col-md-4
-  		= link_to "Просмотреть", article_path(post.id), class: 'btn btn-success btn-block'
-  	div.col-md-4
-  		= link_to "Редактировать", edit_article_path(post.id), class: 'btn btn-success btn-block'
+	div.row
+		div.col-md-6.col-md-offset-3
+			div.panel.panel-primary
+				div.panel-heading
+					= image_tag @user.avatar.url(:mini)
+					= link_to "  " + @user.username.capitalize + " - ", user_path(@user.id)
+					= link_to post.title, article_path(post.id)
+				div.panel-body
+					div.media
+						a.pull-left href="#"
+							img.media-object src="holder.js/64x64"
+						p
+							| #{post.description}
