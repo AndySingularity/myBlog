@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    # TODO: Переменную @user нужно сделать доступной для всех методов
+    # TODO: Переменную @user нужно сделать доступной для всех методов. DRY-метода ёпты!)
     @user = current_user
     @user.update(user_params)
     redirect_to edit_user_path

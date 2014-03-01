@@ -1,11 +1,11 @@
-- title("Новый пост")
+- title("Новая запись")
 
 div.col-md-6.col-md-offset-3
   h2.center
-    | Новый пост
+    | Новая запись
   br
   div.col-md-10.col-md-offset-1
-    = simple_form_for :article do |f|
+    = simple_form_for :article, url: {controller: "articles", action: "create"} do |f|
       div.form-group
         label.sr-only
           | article_title
@@ -16,6 +16,7 @@ div.col-md-6.col-md-offset-3
           | article_text
         = f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6'
       br
+        = f.hidden_field :user_id, value: current_user.id
       div.form-group
         button.btn.btn-success.btn-block type="submit"
           | Создать

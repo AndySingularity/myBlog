@@ -6,8 +6,7 @@ div.col-md-6.col-md-offset-3
 		= simple_form_for :user, url: {controller: "users", action: "update"}, :html => { :method => :put } do |f|
 
 			div.form-group
-				label.sr-only
-					| about
+				label for="about" Немного о себе:
 				= f.input_field :about, class: 'form-control', placeholder: @user.about, as: :text, rows: 7
 
 			div.form-group
