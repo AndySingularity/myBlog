@@ -1,5 +1,11 @@
 class ArticlesController < ApplicationController
 
+	before_filter do
+		if !user_signed_in? then
+			redirect_to new_user_session_path
+		end
+	end
+
 	def create
 		@user = current_user
 		@article = Article.create(article_params)

@@ -22,6 +22,8 @@ nav.navbar.navbar-default role="navigation"
 						= image_tag @user.avatar.url(:medium)
 					br
 					li
+						= link_to @user.username.capitalize, user_path(@user.id)
+					li
 						= link_to 'Настройки', edit_user_registration_path
 					
 				li
