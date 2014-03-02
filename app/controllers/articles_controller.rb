@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@articles = Article.where(:user_id => current_user.id).all.reverse
+		@articles = Article.all.reverse
 	end
 
 	def new

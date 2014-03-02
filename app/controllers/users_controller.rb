@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     if !user_signed_in? then
       redirect_to new_user_session_path
     end
+    @articles = Article.where(:user_id => current_user.id).all.reverse
+    @this_user = User.find(params[:id])
 	end
 
   def user_params
