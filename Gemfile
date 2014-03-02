@@ -49,3 +49,5 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
+
+gem 'holder_rails'
