@@ -11,7 +11,7 @@
 					= link_to post.title, article_path(post.id)
 				div.panel-body
 					div.media
-						a.pull-left href="#"
-							img.media-object src="holder.js/64x64"
 						p
 							| #{post.description}
+						- if post.img?
+							= image_tag post.img.url
