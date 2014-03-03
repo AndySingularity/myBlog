@@ -14,4 +14,4 @@
 						p
 							| #{post.description}
 						- if post.img?
-							= image_tag post.img.url
+							= image_tag post.img.url, :class => 'thumbnail', :style => 'width: 100%;'
