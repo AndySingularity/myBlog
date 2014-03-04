@@ -23,9 +23,9 @@ div.row
 					= image_tag @this_user.avatar.url(:mini)
 					= link_to "  " + @this_user.username.capitalize + " - ", user_path(@this_user.id)
 					= link_to post.title, article_path(post.id)
-				div.panel-body
-					div.media
-						a.pull-left href="#"
-							img.media-object src="holder.js/64x64"
-						p
-							| #{post.description}
+			div.panel-body
+				div.media
+					p
+						| #{post.description}
+					- if post.img?
+						= image_tag post.img.url, :class => 'thumbnail', :style => 'width: 100%;'
