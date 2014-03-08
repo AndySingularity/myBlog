@@ -13,7 +13,8 @@ div.row
 					- if current_user.id == @this_user.id
 						= link_to "Мои новости", articles_path, class: 'btn btn-primary'
 						= link_to "Новая запись", new_article_path, class: 'btn btn-primary'
-						= link_to 'Настройки', edit_user_path(@this_user.id), class: 'btn btn-primary'
+						= link_to 'Обо мне', edit_user_path(@this_user.id), class: 'btn btn-primary'
+						= link_to 'Настройки', edit_user_registration_path, class: 'btn btn-primary'
 
 - @articles.each do |post|
 	div.row

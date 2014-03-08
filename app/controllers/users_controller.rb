@@ -18,16 +18,18 @@ class UsersController < ApplicationController
     @this_user = User.find(params[:id])
 	end
 
-  def user_params
-    params.require(:user).permit(:avatar, :about)
-  end
-
   def edit
   end
 
   def update
     @user.update(user_params)
     redirect_to user_path(@user.id)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:avatar, :about)
   end
 
 end

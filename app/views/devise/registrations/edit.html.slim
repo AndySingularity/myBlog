@@ -1,10 +1,13 @@
 div.col-md-6.col-md-offset-3
-  h2.center
+  h1.center
     | Настройки
+  br
+  = devise_error_messages!
+  h2.center
+    | Новый Email
   br
   div.col-md-10.col-md-offset-1
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-      = devise_error_messages!
 
       div.form-group
         label.sr-only
@@ -14,6 +17,16 @@ div.col-md-6.col-md-offset-3
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div
           | Currently waiting confirmation for: = resource.unconfirmed_email
+
+      div.form-group
+        button.btn.btn-success.btn-block type="submit"
+          | Обновить
+
+  h2.center
+    | Смена пароля
+  br
+  div.col-md-10.col-md-offset-1
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
       div.form-group
         label.sr-only
@@ -31,6 +44,16 @@ div.col-md-6.col-md-offset-3
         = f.password_field :current_password, class: 'form-control', placeholder: 'Текущий пароль'
 
       div.form-group
+        button.btn.btn-success.btn-block type="submit"
+          | Обновить
+
+  h2.center
+    | Смена аватара
+  br
+  div.col-md-10.col-md-offset-1
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+
+      div.form-group
         label.sr-only
           | avatar
         = f.file_field :avatar, class: 'form-control'
@@ -38,6 +61,7 @@ div.col-md-6.col-md-offset-3
       div.form-group
         button.btn.btn-success.btn-block type="submit"
           | Обновить
+
     br
     h3.center
       | Удаление аккаунта
@@ -45,3 +69,6 @@ div.col-md-6.col-md-offset-3
       | 
       div.form-group
         = link_to "Удалить аккаунт?", registration_path(resource_name), :data => { :confirm => "Вы уверены?" }, :method => :delete, class: 'btn btn-success btn-block'
+
+pre
+  = params.inspect

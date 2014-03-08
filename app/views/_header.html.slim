@@ -7,7 +7,8 @@ nav.navbar.navbar-default role="navigation"
 			span.icon-bar
 			span.icon-bar
 		= link_to 'BlogSystem', '/', :class => 'navbar-brand'
-
+		- if user_signed_in?
+			= link_to @user.username.capitalize, user_path(@user.id), :class => 'navbar-brand'
 
 
 	div.collapse.navbar-collapse#bs-example-navbar-collapse-1
