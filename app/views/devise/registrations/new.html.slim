@@ -32,5 +32,4 @@ div.col-md-6.col-md-offset-3
         = f.file_field :avatar, class: 'form-control'
       br
       div.form-group
-        button.btn.btn-success.btn-block type="submit"
-          | Регистрация
+        = f.submit "Регистрация", class: "btn btn-success btn-block"

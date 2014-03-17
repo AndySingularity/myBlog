@@ -9,14 +9,11 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.create(article_params)
-		redirect_to articles_path
+		render "show"
 	end
 
 	def edit
 		@article = Article.where(:id => params[:id])[0]
-		if params[:article]
-			@article.update(article_params)
-		end 
 	end
 
 	def show
@@ -28,6 +25,17 @@ class ArticlesController < ApplicationController
 	end
 
 	def new
+	end
+
+	def update
+		@article = Article.where(:id => params[:id])[0]
+		@article.update(article_params)
+		redirect_to articles_path
+	end
+
+	def destroy
+		Article.find_by(id: params[:id]).delete
+		redirect_to articles_path
 	end
 
 private

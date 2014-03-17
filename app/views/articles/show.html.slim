@@ -13,3 +13,10 @@ div.row
 						| #{@article.description}
 					- if @article.img?
 						= image_tag @article.img.url, :class => 'thumbnail', :style => 'width: 100%;'
+				- if @article.user_id == @user.id
+					div.btn-group
+						= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
+
+
+pre
+	= params.inspect

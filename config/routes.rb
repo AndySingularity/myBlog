@@ -7,8 +7,7 @@ Blog::Application.routes.draw do
   resources :articles
 
   get 'users/:id/edit'    => 'users#edit'
-  
-  get 'articles/new'      => 'articles#new'
   get 'articles/:id/edit' => 'articles#edit'
+
 
 end

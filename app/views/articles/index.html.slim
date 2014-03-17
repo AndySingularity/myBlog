@@ -14,4 +14,8 @@
 						p
 							| #{post.description}
 						- if post.img?
-							= image_tag post.img.url, :class => 'thumbnail', :style => 'width: 100%;'
+							= image_tag post.img.url(:thumb), :class => 'thumbnail'
+					- if post.user_id == @user.id
+						div.btn-group
+							= link_to 'Удалить', article_path(post.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
+							= link_to 'Редактировать', edit_article_path(post.id), class: 'btn btn-primary'

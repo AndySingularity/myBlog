@@ -5,7 +5,7 @@ div.col-md-6.col-md-offset-3
     | Редактирование поста
   br
   div.col-md-10.col-md-offset-1
-    = simple_form_for :article do |f|
+    = simple_form_for :article, url: {controller: "articles", action: "update"}, html: { :method => :put } do |f|
       div.form-group
         label.sr-only
           | article_title
@@ -17,5 +17,15 @@ div.col-md-6.col-md-offset-3
         = f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6', value: @article.description
       br
       div.form-group
+        label.sr-only
+          | img
+        = f.file_field :img, class: 'form-control'
+      br
+        = f.hidden_field :user_id, value: current_user.id
+      div.form-group
         button.btn.btn-success.btn-block type="submit"
-          | Создать
+          | Изменить
+
+
+pre
+  = params.inspect
