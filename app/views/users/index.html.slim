@@ -1,1 +1,6 @@
-p List users
+- @users.each do |user|
+	pre
+		a href="#{user_path(user)}"
+			= image_tag user.avatar.url(:mini)
+			br
+			= user.username.capitalize

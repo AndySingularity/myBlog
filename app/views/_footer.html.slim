@@ -13,6 +13,7 @@ nav.navbar-default.navbar-fixed-bottom.hidden-xs role="navigation"
 		    		= link_to 'Настройки', edit_user_registration_path(@user.id), class: 'navbar-brand'
 		    		= link_to "Новости", articles_path, class: 'navbar-brand'
 		    		= link_to	'Новый пост', new_article_path, :class => 'navbar-brand'
+		    		= link_to	'Пользователи', users_path, :class => 'navbar-brand'
 			div.collapse.navbar-collapse#bs-example-navbar-collapse-1
 			    ul.nav.navbar-nav.navbar-right
 			      	li

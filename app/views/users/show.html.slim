@@ -2,7 +2,8 @@ div.row
 	div.col-md-6.col-md-offset-3.center
 		div.thumbnail
 			br
-			= image_tag @this_user.avatar.url(:medium), class: 'thumbnail'
+			a href="#{@this_user.avatar.url}"
+				= image_tag @this_user.avatar.url(:medium), class: 'thumbnail'
 			div.caption
 				h2
 					= @this_user.username
