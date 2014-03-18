@@ -1,35 +1,19 @@
-/ - title("Новости - #{@user.username.capitalize}")
-
-/ - @articles.each do |post|
-/ 	- post_user = User.find(post.user_id)
-/ 	div.row
-/ 		div.col-md-6.col-md-offset-3
-/ 			div.panel.panel-primary
-/ 				div.panel-heading
-/ 					div.center
-/ 						a href="#{user_path(post_user)}"
-/ 							= image_tag post_user.avatar.url(:mini)
-/ 							br
-/ 							= post_user.username.capitalize
-/ 				a href="#{article_path(post.id)}"
-/ 					div.panel-body
-/ 						div.media
-/ 							p
-/ 								| #{post.description}
-/ 							- if post.img?
-/ 								= image_tag post.img.url(:thumb), :class => 'thumbnail'
-/ 						- if post.user_id == @user.id
-/ 							div.btn-group
-/ 								= link_to 'Удалить', article_path(post.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
-/ 								= link_to 'Редактировать', edit_article_path(post.id), class: 'btn btn-primary'
+- title("Новости - #{@user.username.capitalize}")
 
 - @articles.each do |post|
-	div.col-md-8.col-md-offset-2
-		div.thumbnail
-			- if post.img?
-				= image_tag post.img.url(:medium), :class => 'thumbnail'
-			div.caption.center
-				h3
-					= link_to post.title, article_path(post.id)
-				p
-					= post.description
+	div.row
+		div.col-md-8.col-md-offset-2
+			div.thumbnail
+				- if post.img?
+					a href="#{post.img.url}"
+						= image_tag post.img.url(:medium), :class => 'thumbnail'
+				div.caption
+					div.media
+						a.pull-left href="#"
+							= image_tag @user.avatar.url(:thumb)
+						div.media-body
+							h4.media-heading
+								= link_to post.title, article_path(post.id)
+							br
+							p
+								= post.description

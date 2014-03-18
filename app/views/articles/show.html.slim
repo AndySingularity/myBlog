@@ -1,16 +1,22 @@
 - title("Запись- #{@user.username.capitalize}")
 
-div.col-md-8.col-md-offset-2
-	div.thumbnail
-		- if @article.img?
-			a href="#{@article.img.url}"
-				= image_tag @article.img.url(:medium), :class => 'thumbnail'
-		div.caption.center
-			h3
-				= @article.title
-			p
-				= @article.description
-			hr
-			p.center
-				= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-success'
-				= link_to 'Удалить', article_path(@article.id), class: 'btn btn-danger', :data => { :confirm => "Вы уверены?" }, :method => :delete, style: "margin-left: 5px;"
+div.row
+	div.col-md-8.col-md-offset-2
+		div.thumbnail
+			- if @article.img?
+				a href="#{@article.img.url}"
+					= image_tag @article.img.url(:medium), :class => 'thumbnail'
+			div.caption.center
+				div.media
+					a.pull-left href="#"
+						= image_tag @user.avatar.url(:thumb)
+					div.media-body
+						h4.media-heading
+							= @article.title
+						br
+						p
+							= @article.description
+				hr
+				p.center
+					= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-success'
+					= link_to 'Удалить', article_path(@article.id), class: 'btn btn-danger', :data => { :confirm => "Вы уверены?" }, :method => :delete, style: "margin-left: 5px;"
