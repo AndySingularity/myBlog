@@ -21,3 +21,19 @@ div.row
 					div.btn-group
 						= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
 						= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-primary'
+
+
+
+div.col-md-8.col-md-offset-2
+  div.thumbnail
+    img data-src="holder.js/500x300" alt="500x300" style="width: 100%; height: 100%;"
+    div.caption
+      h3
+      	| Thumbnail label
+      p
+      	| Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+      p.center
+      	a.btn.btn-success href="#" role="button"
+      		| Редактировать
+      	a.btn.btn-danger href="#" role="button" style='margin-left: 5px;'
+      		| Удалить

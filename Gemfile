@@ -32,13 +32,13 @@ gem 'jbuilder', '~> 1.2'
 gem 'paperclip'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
+gem 'holder_rails' # Гем для 'временных' изображений любого размера
 
 group :development do
   gem 'better_errors'
   gem 'capistrano'
   gem 'meta_request'
 end
-
 
 group :production do
   gem 'rails_12factor'
@@ -49,5 +49,3 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
-
-gem 'holder_rails'
