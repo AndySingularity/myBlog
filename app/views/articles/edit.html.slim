@@ -1,26 +1,30 @@
 - title("Редактирование поста")
 
 div.col-md-6.col-md-offset-3
-  h2.center
-    | Редактирование поста
-  br
-  div.col-md-10.col-md-offset-1
-    = simple_form_for :article, url: {controller: "articles", action: "update"}, html: { :method => :put } do |f|
-      div.form-group
-        label.sr-only
-          | article_text
-        = f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6', value: @article.description
-      br
-      div.form-group
-        label.sr-only
-          | img
-        = f.file_field :img, class: 'form-control'
-      br
-        = f.hidden_field :user_id, value: current_user.id
-      div.form-group
-        button.btn.btn-success.btn-block type="submit"
-          | Изменить
+	h2.center
+		| Редактирование поста
+	br
+	div.col-md-10.col-md-offset-1
+		= simple_form_for :article, url: {controller: "articles", action: "update"}, html: { :method => :put } do |f|
+			div.form-group
+				label.sr-only
+					| Title
+				= f.input_field :title, class: 'form-control', placeholder: 'Заголовок',  value: @article.title
+			div.form-group
+				label.sr-only
+					| article_text
+				= f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6', value: @article.description
+			br
+			div.form-group
+				label.sr-only
+					| img
+				= f.file_field :img, class: 'form-control'
+			br
+				= f.hidden_field :user_id, value: current_user.id
+			div.form-group
+				button.btn.btn-success.btn-block type="submit"
+					| Изменить
 
 
 pre
-  = params.inspect
+	= params.inspect
