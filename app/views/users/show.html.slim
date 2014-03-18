@@ -8,9 +8,9 @@ div.row
 					= @this_user.username
 				p
 					= @this_user.about
-				hr
 				div.btn-group
 					- if current_user.id == @this_user.id
+						hr
 						= link_to "Мои новости", articles_path, class: 'btn btn-primary'
 						= link_to "Новая запись", new_article_path, class: 'btn btn-primary'
 						= link_to 'Обо мне', edit_user_path(@this_user.id), class: 'btn btn-primary'
@@ -21,12 +21,18 @@ div.row
 		div.col-md-6.col-md-offset-3
 			div.panel.panel-primary
 				div.panel-heading
-					= image_tag @this_user.avatar.url(:mini)
-					= link_to "  " + @this_user.username.capitalize + " - ", user_path(@this_user.id)
-					= link_to post.title, article_path(post.id)
-				div.panel-body
-					div.media
-						p
-							| #{post.description}
-						- if post.img?
-							= image_tag post.img.url(:medium), :class => 'thumbnail', :style => 'width: 100%;'
+					div.center
+						= image_tag @this_user.avatar.url(:mini)
+						br
+						= @this_user.username.capitalize
+				a href="#{article_path(post.id)}"
+					div.panel-body
+						div.media
+							p
+								| #{post.description}
+							- if post.img?
+								= image_tag post.img.url(:thumb), :class => 'thumbnail'
+						- if post.user_id == @user.id
+							div.btn-group
+								= link_to 'Удалить', article_path(post.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
+								= link_to 'Редактировать', edit_article_path(post.id), class: 'btn btn-primary'

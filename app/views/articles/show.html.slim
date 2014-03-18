@@ -4,19 +4,20 @@
 div.row
 	div.col-md-6.col-md-offset-3
 		div.panel.panel-primary
-			div.panel-heading href="#{user_path(post_user)}"
+			div.panel-heading
 				div.center
-					= image_tag post_user.avatar.url(:mini)
-					br
-					= post_user.username.capitalize
-			a href="#{article_path(@article.id)}"
-				div.panel-body
-					div.media
-						p
-							| #{@article.description}
-						- if @article.img?
-							= image_tag @article.img.url(:thumb), :class => 'thumbnail'
-					- if @article.user_id == @user.id
-						div.btn-group
-							= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
-							= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-primary'
+						a href="#{user_path(post_user)}"
+							= image_tag post_user.avatar.url(:mini)
+							br
+							= post_user.username.capitalize
+			div.panel-body
+				div.media
+					p
+						| #{@article.description}
+					- if @article.img?
+						a href="#{@article.img.url}"
+							= image_tag @article.img.url(:medium), :class => 'thumbnail'
+				- if @article.user_id == @user.id
+					div.btn-group
+						= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
+						= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-primary'

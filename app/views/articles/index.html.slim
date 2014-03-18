@@ -5,11 +5,12 @@
 	div.row
 		div.col-md-6.col-md-offset-3
 			div.panel.panel-primary
-				div.panel-heading href="#{user_path(post_user)}"
+				div.panel-heading
 					div.center
-						= image_tag post_user.avatar.url(:mini)
-						br
-						= post_user.username.capitalize
+						a href="#{user_path(post_user)}"
+							= image_tag post_user.avatar.url(:mini)
+							br
+							= post_user.username.capitalize
 				a href="#{article_path(post.id)}"
 					div.panel-body
 						div.media

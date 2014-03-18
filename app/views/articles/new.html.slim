@@ -8,11 +8,6 @@ div.col-md-6.col-md-offset-3
     = simple_form_for :article, url: {controller: "articles", action: "create"} do |f|
       div.form-group
         label.sr-only
-          | article_title
-        = f.text_field :title, class: 'form-control', placeholder: 'Название поста'
-      br
-      div.form-group
-        label.sr-only
           | article_text
         = f.text_area :description, as: :text , class: 'form-control', placeholder: 'Текст поста', rows: '6'
       br
