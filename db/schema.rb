@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20140302194457) do
   create_table "articles", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
     t.text     "description"
     t.integer  "user_id"
     t.string   "img_file_name"

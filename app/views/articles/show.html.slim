@@ -1,22 +1,22 @@
 - title("Запись- #{@user.username.capitalize}")
 
+- post_user = User.find(@article.user_id)
 div.row
 	div.col-md-6.col-md-offset-3
 		div.panel.panel-primary
-			div.panel-heading
-				= image_tag @user.avatar.url(:mini)
-				= link_to "  " + @user.username.capitalize + " - ", user_path(@user.id)
-				= link_to @article.title, article_path(@article.id)			
-			div.panel-body
-				div.media
-					p
-						| #{@article.description}
-					- if @article.img?
-						= image_tag @article.img.url, :class => 'thumbnail', :style => 'width: 100%;'
-				- if @article.user_id == @user.id
-					div.btn-group
-						= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
-
-
-pre
-	= params.inspect
+			div.panel-heading href="#{user_path(post_user)}"
+				div.center
+					= image_tag post_user.avatar.url(:mini)
+					br
+					= post_user.username.capitalize
+			a href="#{article_path(@article.id)}"
+				div.panel-body
+					div.media
+						p
+							| #{@article.description}
+						- if @article.img?
+							= image_tag @article.img.url(:thumb), :class => 'thumbnail'
+					- if @article.user_id == @user.id
+						div.btn-group
+							= link_to 'Удалить', article_path(@article.id), class: 'btn btn-primary', :data => { :confirm => "Вы уверены?" }, :method => :delete
+							= link_to 'Редактировать', edit_article_path(@article.id), class: 'btn btn-primary'

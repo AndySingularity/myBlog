@@ -28,20 +28,20 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		@article = Article.where(:id => params[:id])[0]
+		@article = Article.find_by(id: params[:id])
 		@article.update(article_params)
 		redirect_to articles_path
 	end
 
 	def destroy
-		Article.find_by(id: params[:id]).delete
+		Article.find_by(id: params[:id]).destroy
 		redirect_to articles_path
 	end
 
 private
 
 	def article_params
-		params.require(:article).permit(:title, :description, :user_id, :img)
+		params.require(:article).permit(:description, :user_id, :img)
 	end
 
 end
