@@ -30,6 +30,6 @@
 				= image_tag post.img.url(:medium), :class => 'thumbnail'
 			div.caption.center
 				h3
-					= post.title
+					= link_to post.title, article_path(post.id)
 				p
 					= post.description
