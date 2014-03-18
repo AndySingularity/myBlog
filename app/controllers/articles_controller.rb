@@ -29,9 +29,6 @@ class ArticlesController < ApplicationController
 
 	def update
 		@article = Article.find_by(id: params[:id])
-		if !params[:img] then
-			@article.img.destroy
-		end
 		@article.update(article_params)
 		redirect_to articles_path
 	end
