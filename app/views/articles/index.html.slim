@@ -5,14 +5,15 @@
 		div.col-md-12.blogShort
 			h3
 				= link_to user_path(post.user)
-					= image_tag post.user.avatar.url(:mini), style: "margin-right: 4px;"
+					= image_tag post.user.avatar.url(:mini), style: "margin-right: 4px; margin-left: 15px;"
 				em
 					= link_to post.title, article_path(post.id)
+
 			= link_to post.img.url
 				= image_tag post.img.url(:medium), :class => 'thumbnail', class: "pull-left img-responsive thumb margin10 img-thumbnail", style: "width: 200px; height: auto;"
-
 
 			article style="padding-bottom: 10px;"
 				p
 					= post.description
+
 			= link_to "Подробнее...", article_path(post.id), class: "btn btn-blog pull-right marginBottom10"
