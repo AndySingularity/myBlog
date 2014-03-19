@@ -2,14 +2,15 @@
 
 - @articles.each do |post|
 	div.row
-		div.col-md-8.col-md-offset-2
+		div.col-md-6.col-md-offset-3
 			div.thumbnail
 				- if post.img?
 					a href="#{post.img.url}"
 						= image_tag post.img.url(:medium), :class => 'thumbnail'
+					hr
 				div.caption
 					div.media
-						a.pull-left href="#{user_path(post.user)}"
+						a.pull-left.center href="#{user_path(post.user)}"
 							= image_tag post.user.avatar.url(:thumb)
 							= post.user.username
 						div.media-body
