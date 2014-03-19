@@ -2,20 +2,17 @@
 
 - @articles.each do |post|
 	div.row
-		div.col-md-10.col-md-offset-1
-			div.thumbnail
-				- if post.img?
-					a href="#{post.img.url}"
-						= image_tag post.img.url(:medium), :class => 'thumbnail'
-					hr
-				div.caption
-					div.media
-						a.pull-left.center href="#{user_path(post.user)}"
-							= image_tag post.user.avatar.url(:thumb)
-							= post.user.username
-						div.media-body
-							h4.media-heading
-								= link_to post.title, article_path(post.id)
-							br
-							p
-								= post.description
+		div.col-md-12.blogShort
+			h3
+				= link_to user_path(post.user)
+					= image_tag post.user.avatar.url(:mini), style: "margin-right: 4px;"
+				em
+					= link_to post.title, article_path(post.id)
+			= link_to post.img.url
+				= image_tag post.img.url(:medium), :class => 'thumbnail', class: "pull-left img-responsive thumb margin10 img-thumbnail", style: "width: 200px; height: auto;"
+
+
+			article style="padding-bottom: 10px;"
+				p
+					| Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+			= link_to "Подробнее...", article_path(post.id), class: "btn btn-blog pull-right marginBottom10"
