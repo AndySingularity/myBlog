@@ -1,12 +1,12 @@
 - title("Запись- #{@user.username.capitalize}")
 
 div.row
-	div.col-md-8.col-md-offset-2
+	div.col-md-12
 		div.thumbnail
 			- if @article.img?
 				a href="#{@article.img.url}"
 					= image_tag @article.img.url(:medium), :class => 'thumbnail'
-			div.caption.center
+			div.caption
 				div.media
 					a.pull-left href="#"
 						= image_tag @user.avatar.url(:thumb)
