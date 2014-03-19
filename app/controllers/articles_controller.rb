@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
 			redirect_to new_user_session_path
 		end
 		@user = current_user
-		@users = User.all
 	end
 
 	def create

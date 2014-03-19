@@ -9,8 +9,9 @@
 						= image_tag post.img.url(:medium), :class => 'thumbnail'
 				div.caption
 					div.media
-						a.pull-left href="#"
-							= image_tag @user.avatar.url(:thumb)
+						a.pull-left href="#{user_path(post.user)}"
+							= image_tag post.user.avatar.url(:thumb)
+							= post.user.username
 						div.media-body
 							h4.media-heading
 								= link_to post.title, article_path(post.id)
